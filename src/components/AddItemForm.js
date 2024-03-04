@@ -5,45 +5,39 @@ function AddItemForm() {
 	const [calorieItem, setCalorieItem] = useState({
 		itemName: '',
 		calories: '',
-		category: ' BREAKFAST', // Default category
+		category: 'BREAKFAST', // Default category
 		description: '',
+		month: '',
+		year: ''
 	});
 
 	const handleSubmit = async (e) => {
-		// Here you would call your IndexedDB function to add the item
-		console.log(calorieItem); // Temporary, for demonstration
-
 		e.preventDefault();
+
 		try {
 			await addCalorieItem(calorieItem); // Add the item to IndexedDB
 			alert('Item added successfully!');
 			// Reset the form or provide feedback to the user
 			setCalorieItem({
+				itemName: '',
 				calories: '',
 				category: 'BREAKFAST',
 				description: '',
+				month: '',
+				year: ''
 			});
 		} catch (error) {
 			console.error('Failed to add item:', error);
 			// Handle the error appropriately
 			alert('Failed to add item. Please try again.');
 		}
-
-		// Reset the form or provide feedback to the user
-		setCalorieItem({
-			name: '',
-			calories: '',
-			category: ' BREAKFAST',
-			description: '',
-		});
-		alert('Item added successfully!');
 	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setCalorieItem((prevState) => ({
 			...prevState,
-			[name]: value,
+			[name]: value
 		}));
 	};
 
@@ -58,7 +52,7 @@ function AddItemForm() {
 					value={calorieItem.itemName}
 					onChange={handleChange}
 					required
-				></input>
+				/>
 			</div>
 			<div>
 				<label htmlFor="calories">Calories</label>
@@ -69,7 +63,7 @@ function AddItemForm() {
 					value={calorieItem.calories}
 					onChange={handleChange}
 					required
-				></input>
+				/>
 			</div>
 			<div>
 				<label htmlFor="category">Category</label>
@@ -87,7 +81,7 @@ function AddItemForm() {
 				</select>
 			</div>
 			<div>
-				<label htmlFor="description">description</label>
+				<label htmlFor="description">Description</label>
 				<input
 					type="text"
 					id="description"
@@ -95,7 +89,29 @@ function AddItemForm() {
 					value={calorieItem.description}
 					onChange={handleChange}
 					required
-				></input>
+				/>
+			</div>
+			<div>
+				<label htmlFor="month">Month</label>
+				<input
+					type="text"
+					id="month"
+					name="month"
+					value={calorieItem.month}
+					onChange={handleChange}
+					required
+				/>
+			</div>
+			<div>
+				<label htmlFor="year">Year</label>
+				<input
+					type="text"
+					id="year"
+					name="year"
+					value={calorieItem.year}
+					onChange={handleChange}
+					required
+				/>
 			</div>
 			<button type="submit">Add Item</button>
 		</form>
@@ -103,3 +119,4 @@ function AddItemForm() {
 }
 
 export default AddItemForm;
+
