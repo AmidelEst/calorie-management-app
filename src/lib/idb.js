@@ -21,7 +21,7 @@ function openDB() {
 		// if 'dbName' exist -> open, if not-> create
 		const request = indexedDB.open(dbName, dbVersion);
 
-		// must run when when created or changed
+		// must run when created or changed
 		request.onupgradeneeded = (event) => {
 			// stores ref to the openDB Obj
 			const db = event.target.result;
@@ -76,9 +76,11 @@ function getAllItems() {
 				const request = store.getAll();
 
 				request.onsuccess = () => resolve(request.result);
-				request.onerror = () => reject('Error fetching entries');
+				request.onerror = (event) => reject('Error fetching entries');
 			})
-			.catch(reject);
+			.catch((error) => {
+				reject('Error opening database: ' + error);
+			});
 	});
 }
 
