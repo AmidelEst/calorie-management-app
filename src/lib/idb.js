@@ -1,18 +1,32 @@
 // idb.js - A library for working with IndexedDB
+
+//  -----global vars------
+
 // version
 const dbVersion = 1;
 // database Name
 const dbName = 'calorieTrackerDB';
-const storeName = 'calorieEntries';
+// similar to a "table" name
+const storeName = 'calorieConsumptionItems';
+//--
 
 // Open or create the database
+
+/**
+ * Opens a connection to the IndexedDB.
+ * @returns {Promise<IDBDatabase>} A promise that resolves with the IDBDatabase instance.
+ */
 function openDB() {
 	return new Promise((resolve, reject) => {
 		// if 'dbName' exist -> open, if not-> create
 		const request = indexedDB.open(dbName, dbVersion);
+
 		// must run when when created or changed
-		request.onupgradeneeded = function (event) {
-			let db = event.target.result;
+		request.onupgradeneeded = (event) => {
+			// stores ref to the openDB Obj
+			const db = event.target.result;
+
+			// if no such DB=> create it
 			if (!db.objectStoreNames.contains(storeName)) {
 				db.createObjectStore(storeName, {
 					keyPath: 'id',
@@ -21,34 +35,39 @@ function openDB() {
 			}
 		};
 
-		request.onsuccess = function (event) {
+		request.onsuccess = (event) => {
 			resolve(event.target.result);
 		};
-
-		request.onerror = function (event) {
+		request.onerror = (event) => {
 			reject('IndexedDB error: ' + event.target.errorCode);
 		};
 	});
 }
 
-// Add a new entry
-function addEntry(entry) {
+// Add a new item
+
+/**
+ * Adds a new calorie item to the database.
+ * @param {Object} item The calorie item to add.
+ * @returns {Promise<void>} A promise that resolves when the item is added.
+ */
+function addCalorieItem(item) {
 	return new Promise((resolve, reject) => {
 		openDB()
 			.then((db) => {
 				const transaction = db.transaction([storeName], 'readwrite');
 				const store = transaction.objectStore(storeName);
-				const request = store.add(entry);
+				const request = store.add(item);
 
 				request.onsuccess = () => resolve(request.result);
-				request.onerror = () => reject('Error adding entry');
+				request.onerror = (event) => reject('Error adding item');
 			})
 			.catch(reject);
 	});
 }
 
 // Get all entries
-function getAllEntries() {
+function getAllItems() {
 	return new Promise((resolve, reject) => {
 		openDB()
 			.then((db) => {
@@ -63,4 +82,6 @@ function getAllEntries() {
 	});
 }
 
-// Placeholder for updateEntry and deleteEntry functions
+// Placeholder for updateitem and deleteitem functions
+
+module.exports = { openDB,addCalorieItem,getAllItems };
