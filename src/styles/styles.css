@@ -1,0 +1,58 @@
+
+
+  
+
+
+.custom-box {
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 400px;
+    margin: auto;
+    background-color: azure; /* Set background color to azure */
+}
+
+.form-control {
+    margin-bottom: 16px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: darkblue; /* Change label color to dark blue */
+}
+
+.form-control input,
+.form-control select {
+    width: calc(100% - 16px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-control select {
+    appearance: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.form-actions button {
+    padding: 8px 16px;
+    margin-top: 16px;
+    background-color: white; /* Set button background color to white */
+    color: darkblue; /* Set button text color to dark blue */
+    border: 1px solid darkblue; /* Add border to button */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-actions button:hover {
+    background-color: darkblue; /* Change button background color to dark blue on hover */
+    color: white; /* Change button text color to white on hover */
+}
+
+
