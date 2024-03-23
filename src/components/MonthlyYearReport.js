@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getAllItems } from '../lib/idb';
-import { FormLabel, Input, Button, Box } from "@chakra-ui/react";
+import { FormLabel, Input, Button, Box } from '@chakra-ui/react';
 import '../styles/styles.css'; // Import the CSS file
 
 function MonthlyYearReport({ updateItemsForMonthYear }) {
@@ -41,30 +41,30 @@ function MonthlyYearReport({ updateItemsForMonthYear }) {
   };
 
   return (
-    <div className="custom-box"> {/* Apply custom styling */}
-      <div className="form-control">
-        <FormLabel htmlFor="month">Month</FormLabel>
+    <div className='custom-box'> {/* Apply custom styling */}
+      <div className='form-control'>
+        <FormLabel htmlFor='month'>Month</FormLabel>
         <Input
-          type="number"
-          id="month"
-          name="month"
+          type='number'
+          id='month'
+          name='month'
           value={selectedMonth}
           onChange={handleMonthChange}
           required />
       </div>
 
-      <div className="form-control">
-        <FormLabel htmlFor="year">Year</FormLabel>
+      <div className='form-control'>
+        <FormLabel htmlFor='year'>Year</FormLabel>
         <Input
-          type="number"
-          id="year"
-          name="year"
+          type='number'
+          id='year'
+          name='year'
           value={selectedYear}
           onChange={handleYearChange}
           required />
       </div>
 
-      <div className="form-actions">
+      <div className='form-actions'>
         <Button onClick={fetchAndDisplayItems}>Display Items</Button>
       </div>
     </div>

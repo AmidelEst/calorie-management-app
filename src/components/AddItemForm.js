@@ -1,6 +1,23 @@
+/*
+    developers:
+        1. developer
+        first name: Amit, 
+        last name": Pompas, 
+        id:315072397,
+        2. developer
+        first name: Lior, 
+        last name": Bezalel, 
+        id:207015249,
+        3. developer
+        first name: Tal, 
+        last name": Brachya, 
+        id:318660859,  
+    
+*/
+
 import React, { useState } from 'react';
 import { addCalorieItem } from '../lib/idb';
-import { FormControl, FormLabel, Input, Select, Button, Box } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Select, Button, Box } from '@chakra-ui/react';
 import '../styles/styles.css';
 
 function AddItemForm() {
@@ -55,80 +72,80 @@ function AddItemForm() {
     };
 
     return (
-        <Box className="custom-box">
+        <Box className='custom-box'>
             <form onSubmit={handleSubmit}>
-                <FormControl className="form-control">
-                    <FormLabel htmlFor="itemName">Item Name</FormLabel>
+                <FormControl className='form-control'>
+                    <FormLabel htmlFor='itemName'>Item Name</FormLabel>
                     <Input
-                        type="text"
-                        id="itemName"
-                        name="itemName"
+                        type='text'
+                        id='itemName'
+                        name='itemName'
                         value={calorieItem.itemName}
                         onChange={handleChange}
                         required
                     />
                 </FormControl>
-                <FormControl className="form-control">
-                    <FormLabel htmlFor="calories">Calories</FormLabel>
+                <FormControl className='form-control'>
+                    <FormLabel htmlFor='calories'>Calories</FormLabel>
                     <Input
-                        type="number"
-                        id="calories"
-                        name="calories"
+                        type='number'
+                        id='calories'
+                        name='calories'
                         value={calorieItem.calories}
                         onChange={handleChange}
                         required
                     />
                 </FormControl>
-                <FormControl className="form-control">
-                    <FormLabel htmlFor="category">Category</FormLabel>
+                <FormControl className='form-control'>
+                    <FormLabel htmlFor='category'>Category</FormLabel>
                     <Select
-                        id="category"
-                        name="category"
+                        id='category'
+                        name='category'
                         value={calorieItem.category}
                         onChange={handleChange}
                         required
                     >
-                        <option value="BREAKFAST">Breakfast</option>
-                        <option value="LUNCH">Lunch</option>
-                        <option value="DINNER">Dinner</option>
-                        <option value="OTHER">Other</option>
+                        <option value='BREAKFAST'>Breakfast</option>
+                        <option value='LUNCH'>Lunch</option>
+                        <option value='DINNER'>Dinner</option>
+                        <option value='OTHER'>Other</option>
                     </Select>
                 </FormControl>
-                <FormControl className="form-control">
-                    <FormLabel htmlFor="description">Description</FormLabel>
+                <FormControl className='form-control'>
+                    <FormLabel htmlFor='description'>Description</FormLabel>
                     <Input
-                        type="text"
-                        id="description"
-                        name="description"
+                        type='text'
+                        id='description'
+                        name='description'
                         value={calorieItem.description}
                         onChange={handleChange}
                         required
                     />
                 </FormControl>
-                <FormControl className="form-control">
-                    <FormLabel htmlFor="month">Month</FormLabel>
+                <FormControl className='form-control'>
+                    <FormLabel htmlFor='month'>Month</FormLabel>
                     <Input
-                        type="number"
-                        id="month"
-                        name="month"
+                        type='number'
+                        id='month'
+                        name='month'
                         value={calorieItem.month}
                         onChange={handleChange}
                         required
                     />
                 </FormControl>
-                <FormControl className="form-control">
-                    <FormLabel htmlFor="year">Year</FormLabel>
+                <FormControl className='form-control'>
+                    <FormLabel htmlFor='year'>Year</FormLabel>
                     <Input
-                        type="number"
-                        id="year"
-                        name="year"
+                        type='number'
+                        id='year'
+                        name='year'
                         value={calorieItem.year}
                         onChange={handleChange}
                         required
                     />
                 </FormControl>
-                <div className="form-actions">
-                    <Button type="submit">Add Item</Button>
+                <div className='form-actions'>
+                    <Button type='submit'>Add Item</Button>
                 </div>
             </form>
         </Box>

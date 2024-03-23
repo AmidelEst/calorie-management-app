@@ -1,9 +1,9 @@
-import {Box} from "@chakra-ui/react";
+import {Box} from '@chakra-ui/react';
 
 function AppBackground({ children }) {
   return (
     <Box
-      backgroundImage="linear-gradient(45deg, #2980b9, #6dd5fa, #ffffff)"
+      backgroundImage='linear-gradient(45deg, #2980b9, #6dd5fa, #ffffff)'
       minHeight="100vh"
       display="flex"
       flexDirection="column"
